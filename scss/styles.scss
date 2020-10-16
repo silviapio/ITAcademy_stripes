@@ -1,0 +1,52 @@
+$colors: #244F75, #60BFBF, #8C4B7E, #F8BB44, #F24B4B;
+ 
+/*strip1 #244F75
+s2 #60BFBF
+s3 #8C4B7E
+s4 #F8BB44
+s5 #F24B4B*/
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+.strips {
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: green;
+}
+
+.strip {
+    &__strip {
+        min-height: 100vh;
+        flex: 1 1 auto;
+        background-color:yellow;
+        @include flexCenter();
+        align-self: center;
+    }
+
+    &__content {
+        min-height: 100vh;
+        flex: 1 1 auto;
+        background-color:red;
+        @include flexCenter(); 
+    }
+
+    &__title {
+        text-align: center;
+    }
+}
+
+
+

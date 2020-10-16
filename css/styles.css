@@ -1,0 +1,37 @@
+/*strip1 #244F75
+s2 #60BFBF
+s3 #8C4B7E
+s4 #F8BB44
+s5 #F24B4B*/
+html, body {
+  height: 100%; }
+
+.strips {
+  min-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: green; }
+
+.strip__strip {
+  min-height: 100vh;
+  flex: 1 1 auto;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center; }
+
+.strip__content {
+  min-height: 100vh;
+  flex: 1 1 auto;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.strip__title {
+  text-align: center; }
