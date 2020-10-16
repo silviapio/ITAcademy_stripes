@@ -12,6 +12,8 @@ s5 #F24B4B*/
     align-items: center;
 }
 
+
+
 html, body {
     height: 100%;
 }
@@ -24,14 +26,12 @@ html, body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: green;
 }
 
 .strip {
     &__strip {
         min-height: 100vh;
         flex: 1 1 auto;
-        background-color:yellow;
         @include flexCenter();
         align-self: center;
     }
@@ -39,12 +39,17 @@ html, body {
     &__content {
         min-height: 100vh;
         flex: 1 1 auto;
-        background-color:red;
         @include flexCenter(); 
     }
 
     &__title {
         text-align: center;
+    }
+}
+
+@for $i from 1 through length($colors) {
+    .strip__strip:nth-child(#{$i}) {
+        background: nth($colors, $i);
     }
 }
 

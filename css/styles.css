@@ -13,13 +13,11 @@ html, body {
   color: black;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  background-color: green; }
+  align-items: center; }
 
 .strip__strip {
   min-height: 100vh;
   flex: 1 1 auto;
-  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,10 +26,24 @@ html, body {
 .strip__content {
   min-height: 100vh;
   flex: 1 1 auto;
-  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center; }
 
 .strip__title {
   text-align: center; }
+
+.strip__strip:nth-child(1) {
+  background: #244F75; }
+
+.strip__strip:nth-child(2) {
+  background: #60BFBF; }
+
+.strip__strip:nth-child(3) {
+  background: #8C4B7E; }
+
+.strip__strip:nth-child(4) {
+  background: #F8BB44; }
+
+.strip__strip:nth-child(5) {
+  background: #F24B4B; }
