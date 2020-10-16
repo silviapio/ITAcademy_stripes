@@ -3,6 +3,9 @@ s2 #60BFBF
 s3 #8C4B7E
 s4 #F8BB44
 s5 #F24B4B*/
+* {
+  box-sizing: border-box; }
+
 html, body {
   height: 100%; }
 
@@ -17,6 +20,7 @@ html, body {
 
 .strip__strip {
   min-height: 100vh;
+  width: 20%;
   flex: 1 1 auto;
   display: flex;
   justify-content: center;

@@ -12,7 +12,9 @@ s5 #F24B4B*/
     align-items: center;
 }
 
-
+* {
+    box-sizing: border-box;
+}
 
 html, body {
     height: 100%;
@@ -31,6 +33,7 @@ html, body {
 .strip {
     &__strip {
         min-height: 100vh;
+        width: 20%;
         flex: 1 1 auto;
         @include flexCenter();
         align-self: center;
