@@ -1,16 +1,7 @@
-$colors: #244F75, #60BFBF, #8C4B7E, #F8BB44, #F24B4B;
- 
-/*strip1 #244F75
-s2 #60BFBF
-s3 #8C4B7E
-s4 #F8BB44
-s5 #F24B4B*/
+@import 'variables';
+@import 'mixins';
 
-@mixin flexCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/*verify white margin of stripes*/ 
 
 * {
     box-sizing: border-box;
@@ -25,36 +16,48 @@ html, body {
     text-align: center;
     overflow: hidden;
     color: black;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .strip {
     &__strip {
+        position: absolute;
         min-height: 100vh;
         width: 20%;
-        flex: 1 1 auto;
-        @include flexCenter();
-        align-self: center;
+        overflow: hidden;
     }
 
     &__content {
-        min-height: 100vh;
-        flex: 1 1 auto;
-        @include flexCenter(); 
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__title {
         text-align: center;
+        font-size: 3.5vw;
     }
 }
+
+
 
 @for $i from 1 through length($colors) {
     .strip__strip:nth-child(#{$i}) {
         background: nth($colors, $i);
     }
 }
+
+@for $i from 0 through 4 {
+    .strip__strip:nth-child(#{$i+1}) {
+        left: $i*20vw;
+    }
+}
+
 
 
 
