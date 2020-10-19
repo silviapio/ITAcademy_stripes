@@ -39,24 +39,69 @@ html, body {
     }
 
     &__title {
-        text-align: center;
         font-size: 3.5vw;
     }
 }
 
+@keyframes strip1 {
+    from {
+      transform: translate3d(-100%, 0, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
+@keyframes strip2 {
+    from {
+      transform: translate3d(0, 100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@keyframes strip3 {
+    from {
+      transform: translate3d(0, -100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@keyframes strip4 {
+    from {
+      transform: translate3d(0, 100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@keyframes strip5 {
+    from {
+      transform: translate3d(100%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
 @for $i from 1 through length($colors) {
     .strip__strip:nth-child(#{$i}) {
         background: nth($colors, $i);
+        animation: strip#{$i} 1s ease-in-out 0.4s;
     }
 }
 
-@for $i from 0 through 4 {
-    .strip__strip:nth-child(#{$i+1}) {
-        left: $i*20vw;
+@for $j from 0 through 4 {
+    .strip__strip:nth-child(#{$j+1}) {
+        left: $j*20vw;
     }
 }
+
+
 
 
 
