@@ -47,7 +47,7 @@ html, body {
           height: 100%;
           background-color: white;
           opacity: 0.05;
-          transform: skew(30deg) scaleY(1) translate(0,0);
+          transform: skew(30deg) scaleY(1) translate(0,0);          
           transform-origin: center-center;
         }
 
@@ -57,17 +57,39 @@ html, body {
         }
     }
 
-    
-
-
     &__title {
         font-size: 3.5vw;
+        font-weight: 300;
+        font-family: 'Lato', sans-serif;
+        color: white;
+    }
+
+    &__title h1{
+      margin: 0 0 16px;
     }
 }
+
+@-webkit-keyframes strip1 {
+    from {
+      transform: translate3d(-100%, 0, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
 @keyframes strip1 {
     from {
       transform: translate3d(-100%, 0, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@-webkit-keyframes strip2 {
+    from {
+      transform: translate3d(0, 100%, 0) ;
     }
     to {
       transform: translate3d(0, 0, 0);
@@ -83,6 +105,15 @@ html, body {
     }
   }
 
+@-webkit-keyframes strip3 {
+    from {
+      transform: translate3d(0, -100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
 @keyframes strip3 {
     from {
       transform: translate3d(0, -100%, 0) ;
@@ -92,9 +123,27 @@ html, body {
     }
   }
 
+@-webkit-keyframes strip4 {
+    from {
+      transform: translate3d(0, 100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
 @keyframes strip4 {
     from {
       transform: translate3d(0, 100%, 0) ;
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+@-webkit-keyframes strip5 {
+    from {
+      transform: translate3d(100%, 0, 0);
     }
     to {
       transform: translate3d(0, 0, 0);
@@ -113,13 +162,13 @@ html, body {
 @for $i from 1 through length($colors) {
     .strip__strip:nth-child(#{$i}) {
         background: nth($colors, $i);
-        animation: strip#{$i} 1s ease-in-out 0.4s;
+        @include animationIn($i);
     }
 }
 
 @for $j from 0 through 4 {
     .strip__strip:nth-child(#{$j+1}) {
-        left: $j*20vw;
+        @include leftPositioning($j);
     }
 }
 

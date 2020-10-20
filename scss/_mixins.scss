@@ -1,5 +1,8 @@
-@mixin flexCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@mixin animationIn($n) {
+    -webkit-animation: strip#{$n} 1s ease-in-out 0.1s*$n;
+            animation: strip#{$n} 1s ease-in-out 0.1s*$n;
+}
+
+@mixin leftPositioning($num) {
+    left: $num*20vw;
 }
