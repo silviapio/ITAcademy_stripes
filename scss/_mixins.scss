@@ -1,8 +1,18 @@
+/*assigns the corresponding delay to every strip in the loading animation ($n iterates from 1 to 5)*/
 @mixin animationIn($n) {
-    -webkit-animation: strip#{$n} 1s ease-in-out 0.1s*$n;
-            animation: strip#{$n} 1s ease-in-out 0.1s*$n;
+    -webkit-animation: strip#{$n} 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s*$n;
+            animation: strip#{$n} 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s*$n;
 }
 
+/*assigns the corresponding positioning to each strip ($num iterates from 0 to 4)*/
 @mixin leftPositioning($num) {
     left: $num*20vw;
+}
+
+@mixin positionAbsFull {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

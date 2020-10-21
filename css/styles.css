@@ -1,3 +1,5 @@
+/*assigns the corresponding delay to every strip in the loading animation ($n iterates from 1 to 5)*/
+/*assigns the corresponding positioning to each strip ($num iterates from 0 to 4)*/
 * {
   box-sizing: border-box; }
 
@@ -7,39 +9,49 @@ html, body {
 .strips {
   min-height: 100vh;
   text-align: center;
-  overflow: hidden;
-  color: black; }
+  overflow: hidden; }
 
 .strip__strip {
+  /*container for colored strips*/
   position: absolute;
   min-height: 100vh;
   width: 20%;
-  overflow: hidden; }
+  overflow: hidden;
+  cursor: pointer; }
 
 .strip__content {
+  /*colored strip and container for text*/
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   width: 100%;
   height: 100%;
+  /*gives positioning (top and left), height and width*/
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center; }
   .strip__content::before {
     content: '';
+    /*property content is necessary to view the pseudo element*/
     position: absolute;
-    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    /*places skewed white strip in front of color*/
     background-color: white;
     opacity: 0.05;
+    /*makes the strip transparent*/
     transform: skew(30deg) scaleY(1) translate(0, 0);
-    transform-origin: center-center; }
+    /*places skewed white strip in right positioning*/
+    transform-origin: center-center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    /*ensures the transition when hovering is smooth*/ }
   .strip__content:hover::before {
     transform: skew(0deg) scale(3) translate(0, 0);
+    /*hides the white skewed strip when hovering, shading the vertical strip*/
     opacity: 0.1; }
 
 .strip__title {
@@ -51,6 +63,7 @@ html, body {
 .strip__title h1 {
   margin: 0 0 16px; }
 
+/*animations on colored strips, triggered on page load*/
 @-webkit-keyframes strip1 {
   from {
     transform: translate3d(-100%, 0, 0); }
@@ -111,31 +124,38 @@ html, body {
   to {
     transform: translate3d(0, 0, 0); } }
 
+/*iteration assigning corresponding background and animation to each strip*/
 .strip__strip:nth-child(1) {
+  /*assign to class .strip__strip because .strip__content is always an only child*/
   background: #244F75;
-  -webkit-animation: strip1 1s ease-in-out 0.1s;
-  animation: strip1 1s ease-in-out 0.1s; }
+  -webkit-animation: strip1 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;
+  animation: strip1 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s; }
 
 .strip__strip:nth-child(2) {
+  /*assign to class .strip__strip because .strip__content is always an only child*/
   background: #60BFBF;
-  -webkit-animation: strip2 1s ease-in-out 0.2s;
-  animation: strip2 1s ease-in-out 0.2s; }
+  -webkit-animation: strip2 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+  animation: strip2 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s; }
 
 .strip__strip:nth-child(3) {
+  /*assign to class .strip__strip because .strip__content is always an only child*/
   background: #8C4B7E;
-  -webkit-animation: strip3 1s ease-in-out 0.3s;
-  animation: strip3 1s ease-in-out 0.3s; }
+  -webkit-animation: strip3 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
+  animation: strip3 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s; }
 
 .strip__strip:nth-child(4) {
+  /*assign to class .strip__strip because .strip__content is always an only child*/
   background: #F8BB44;
-  -webkit-animation: strip4 1s ease-in-out 0.4s;
-  animation: strip4 1s ease-in-out 0.4s; }
+  -webkit-animation: strip4 1s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+  animation: strip4 1s cubic-bezier(0.23, 1, 0.32, 1) 0.4s; }
 
 .strip__strip:nth-child(5) {
+  /*assign to class .strip__strip because .strip__content is always an only child*/
   background: #F24B4B;
-  -webkit-animation: strip5 1s ease-in-out 0.5s;
-  animation: strip5 1s ease-in-out 0.5s; }
+  -webkit-animation: strip5 1s cubic-bezier(0.23, 1, 0.32, 1) 0.5s;
+  animation: strip5 1s cubic-bezier(0.23, 1, 0.32, 1) 0.5s; }
 
+/*iteration assigning correct positioning to each strip*/
 .strip__strip:nth-child(1) {
   left: 0vw; }
 

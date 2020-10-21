@@ -1,8 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-/*verify white margin of stripes*/ 
-
 * {
     box-sizing: border-box;
 }
@@ -15,53 +13,46 @@ html, body {
     min-height: 100vh;
     text-align: center;
     overflow: hidden;
-    color: black;
 }
 
 .strip {
-    &__strip {
-        position: absolute;
-        min-height: 100vh;
-        width: 20%;
-        overflow: hidden;
+    &__strip { /*container for colored strips*/
+      position: absolute;
+      min-height: 100vh;
+      width: 20%;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    &__content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    &__content { /*colored strip and container for text*/
+      @include positionAbsFull; /*gives positioning (top and left), height and width*/
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        &::before {
-          content: '';
-          position: absolute;
-          z-index: 1;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: white;
-          opacity: 0.05;
-          transform: skew(30deg) scaleY(1) translate(0,0);          
-          transform-origin: center-center;
+      &::before {
+        content: ''; /*property content is necessary to view the pseudo element*/
+        @include positionAbsFull;
+        z-index: 1; /*places skewed white strip in front of color*/
+        background-color: white;
+        opacity: 0.05; /*makes the strip transparent*/
+        transform: skew(30deg) scaleY(1) translate(0,0); /*places skewed white strip in right positioning*/         
+        transform-origin: center-center;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /*ensures the transition when hovering is smooth*/
         }
 
         &:hover::before {
-          transform: skew(0deg) scale(3) translate(0,0);
+          transform: skew(0deg) scale(3) translate(0,0); /*hides the white skewed strip when hovering, shading the vertical strip*/
           opacity:0.1;
         }
     }
 
     &__title {
-        font-size: 3.5vw;
-        font-weight: 300;
-        font-family: 'Lato', sans-serif;
-        color: white;
+      font-size: 3.5vw;
+      font-weight: 300;
+      font-family: 'Lato', sans-serif;
+      color: white;
     }
 
     &__title h1{
@@ -69,6 +60,7 @@ html, body {
     }
 }
 
+/*animations on colored strips, triggered on page load*/
 @-webkit-keyframes strip1 {
     from {
       transform: translate3d(-100%, 0, 0) ;
@@ -159,13 +151,15 @@ html, body {
     }
   }
 
+/*iteration assigning corresponding background and animation to each strip*/
 @for $i from 1 through length($colors) {
-    .strip__strip:nth-child(#{$i}) {
+    .strip__strip:nth-child(#{$i}) { /*assign to class .strip__strip because .strip__content is always an only child*/
         background: nth($colors, $i);
         @include animationIn($i);
     }
 }
 
+/*iteration assigning correct positioning to each strip*/
 @for $j from 0 through 4 {
     .strip__strip:nth-child(#{$j+1}) {
         @include leftPositioning($j);
